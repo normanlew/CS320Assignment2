@@ -1,18 +1,16 @@
 grammar Test6;
 
-peak : '<' top '>';
+datamodel : value;
 
-top : '"books"' '->' array;
+value : object | array | STRING | NUMBER;
 
-array : '[' (book','|book)+ ']';
-
-book : '<' (keyvalue','|keyvalue)+ '>';
+object : '<' (keyvalue','|keyvalue)+ '>';
 
 keyvalue : ATTRIBUTE '->' value;
 
-ATTRIBUTE : '"'[a-z]+'"';
+array : '[' (value','|value)+ ']';
 
-value : STRING|NUMBER;
+ATTRIBUTE : '"'[a-z]+'"';
 
 STRING : '"'.*?'"';
 
